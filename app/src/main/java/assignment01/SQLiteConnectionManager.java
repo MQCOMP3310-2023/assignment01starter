@@ -38,7 +38,7 @@ public class SQLiteConnectionManager {
      */
     public SQLiteConnectionManager(String filename)
     {
-        databaseURL = "jdbc:sqlite:sqlite/" + filename;
+        databaseURL = "jdbc:sqlite:sqlite/" + filename;        
     }
 
     /**
@@ -67,7 +67,7 @@ public class SQLiteConnectionManager {
      * @return true if the file exists in the correct location, false otherwise. If no url defined, also false.
      */
     public boolean checkIfConnectionDefined(){
-        if(databaseURL == ""){
+        if(databaseURL.equals("")){
             return false;
         }else{
             try (Connection conn = DriverManager.getConnection(databaseURL)) {
@@ -138,19 +138,16 @@ public class SQLiteConnectionManager {
         String sql = "SELECT word FROM validWords where id="+index+";";
         String result = "";
         try (Connection conn = DriverManager.getConnection(databaseURL);
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            //pstmt.setInt(1, index);
+            PreparedStatement pstmt = conn.prepareStatement(sql)) {          
             ResultSet cursor = pstmt.executeQuery();
             if(cursor.next()){
-                System.out.println("successful next curser sqlite");
+                System.out.println("Successful next curser sqlite");
                 result = cursor.getString(1);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println(e);
         }
-        System.out.println("getWordAtIndex===========================");
-        System.out.println("sql: " + sql);
-        System.out.println("result: " + result);
+        
 
         return result;
     }
@@ -188,7 +185,7 @@ public class SQLiteConnectionManager {
                 return false;
 
             } catch (SQLException e) {
-                System.out.println(e.getMessage());
+                System.out.println(e.getStackTrace());
                 return false;
             }
 

@@ -4,3 +4,5 @@ app/bin/main/workshop06_code/SQLiteConnectionManager.class
 hello_logger.log.*
 app/hello_logger.log.*
 app/bin/main/workshop06_code/App.class
+.gradle/7.3.3/executionHistory/*.bin
+.gradle/buildOutputCleanup/*.lock
