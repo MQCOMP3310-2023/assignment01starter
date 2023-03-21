@@ -66,9 +66,10 @@ public class App extends JFrame {
             try {
                 Thread.sleep(20L - howLong);
             } catch (InterruptedException e) {
-                System.out.println("thread was interrupted, but who cares?");
+                System.out.println("Thread was interrupted, but who cares?");                
             } catch (IllegalArgumentException e) {
-                System.out.println("application can't keep up with framerate");
+                System.out.println("Application can't keep up with framerate");
+                e.printStackTrace();
             }
         }
     }
